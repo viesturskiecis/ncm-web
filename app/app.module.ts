@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { TabsModule } from 'ng2-bootstrap/ng2-bootstrap';
  
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/index';
@@ -13,16 +14,18 @@ import { routing }        from './app.routing';
  
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService} from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
+import { GreenCasesComponent } from './components/index';
  
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
+        TabsModule,
         routing
     ],
     declarations: [
@@ -30,14 +33,14 @@ import { RegisterComponent } from './register/index';
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        GreenCasesComponent
     ],
     providers: [
         AuthGuard,
         AlertService,
         AuthenticationService,
         UserService,
- 
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,
