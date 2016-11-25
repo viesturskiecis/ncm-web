@@ -12,50 +12,27 @@
     </ul>
   </div>
 </div>
-
+<br><br><br>
 <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-pills nav-stacked">
-              <li><a data-toggle="tab" href="#menu1">Green cases</a></li>
-              <li><a data-toggle="tab" href="#menu2">Monitoring</a></li>
-              <li><a data-toggle="tab" href="#menu3">Job Statistics</a></li>
-            </ul>            <!--<div (click)="$event.preventDefault()">
-                <tabset vertical="true" type="pills">
-                    
-                    <tab heading="Green cases">
-                    </tab>
-                    <tab heading="Monitoring">
-                        
-                    </tab>
-                    <tab heading="Job Statistics">
-                        
-                    </tab>
-
-                    <tab *ngFor="let tabz of tabs"
-                         [heading]="tabz.title"
-                         [active]="tabz.active"
-                         (select)="showView(tabz)"
-                         (deselect)="tabz.active = false"
-                         [disabled]="tabz.disabled"
-                         [removable]="tabz.removable">
-                    </tab>
-                </tabset>
-            </div>-->
+        <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+            <ul class="list-group">
+                <a [routerLink]="['/register']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                    <i class="fa fa-fw fa-dashboard"></i> Green cases
+                </a>
+                <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                    <i class="fa fa-fw fa-bar-chart-o"></i> Monitoring
+                </a>
+                <a [routerLink]="['/home']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                    <i class="fa fa-fw fa-bar-chart-o"></i> Statistics
+                </a>
+            </ul>
+        </nav>
         </div>
         <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
-          <div class="tab-content">
-              <div id="menu1" class="tab-pane fade in active">
-                <greencases></greencases>
-              </div>
-              <div id="menu2" class="tab-pane fade">
-                <h3>Menu 1</h3>
-                <p>Some content in menu 1.</p>
-              </div>
-              <div id="menu3" class="tab-pane fade">
-                <h3>Menu 2</h3>
-                <p>Some content in menu 2.</p>
-              </div>
-            </div>
+          <section class="main-container" [ngClass]="{sidebarPushRight: isActive}"> 
+            <router-outlet></router-outlet>
+        </section>
       </div>
     </div> 
