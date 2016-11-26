@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
- 
-import { User } from '../_models/';
-import { UserService } from '../_services/index';
+import { User } from '../../_models/';
+import { UserService } from '../../_services/index';
 
-
- 
 @Component({
     moduleId: module.id,
-    templateUrl: 'home.component.html',
+    selector: 'top-nav',
+    templateUrl: 'topnav.html',
+    styleUrls: ['topnav.css']
 })
- 
-export class HomeComponent implements OnInit {
-    currentUser: User;
+
+export class TopNavComponent implements OnInit{
+	currentUser: User;
     users: User[] = [];
 
     constructor(private userService: UserService) {
@@ -29,7 +28,5 @@ export class HomeComponent implements OnInit {
     private loadAllUsers() {
         this.userService.getAll().subscribe(users => { this.users = users; });
     }
-
-  };
-
+	
 }

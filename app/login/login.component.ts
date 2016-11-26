@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
  
 import { AlertService, AuthenticationService } from '../_services/index';
  
 @Component({
     moduleId: module.id,
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css'],
+    encapsulation: ViewEncapsulation.None,
 })
  
 export class LoginComponent implements OnInit {
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
-                    this.router.navigate(['/']);
+                    this.router.navigate(['/dashboard']);
                 },
                 error => {
                     this.alertService.error(error);

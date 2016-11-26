@@ -7,6 +7,15 @@ export let fakeBackendProvider = {
     useFactory: (backend: MockBackend, options: BaseRequestOptions) => {
         // array in local storage for registered users
         let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
+        let casejson : string = '[{"id":"1", "casetype":"OK", "debtorid":"11111111111", "status":"match"},'+
+            '{"id":"1", "casetype":"Customer/Address not found", "debtorid":"22222222222", "status":"mismatch"},'+
+            '{"id":"1", "casetype":"Customer not found", "debtorid":"33333333333", "status":"partial"},'+
+            '{"id":"1", "casetype":"OK", "debtorid":"44444444444", "status":"match"},'+
+            '{"id":"1", "casetype":"OK", "debtorid":"55555555555", "status":"match"},'+
+            '{"id":"1", "casetype":"OK", "debtorid":"66666666666", "status":"match"},'+
+            '{"id":"1", "casetype":"Address not found", "debtorid":"77777777777", "status":"partial"},'+
+            '{"id":"1", "casetype":"Wrong name", "debtorid":"88888888888", "status":"mismatch"}]';
+        let cases: any[] = JSON.parse(casejson) || [];
  
         // configure fake backend
         backend.connections.subscribe((connection: MockConnection) => {
@@ -110,6 +119,17 @@ export let fakeBackendProvider = {
  
                         // respond 200 OK
                         connection.mockRespond(new Response(new ResponseOptions({ status: 200 })));
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));
+                    }
+                }
+
+                // get cases
+                if (connection.request.url.endsWith('/api/cases') && connection.request.method === RequestMethod.Get) {
+                    // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
+                    if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                        connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: cases })));
                     } else {
                         // return 401 not authorised if token is null or invalid
                         connection.mockRespond(new Response(new ResponseOptions({ status: 401 })));

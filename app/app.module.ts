@@ -2,6 +2,12 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
+import { LoginModule } from './login/login.module';
+import { RegisterModule } from './register/register.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { SharedModule } from './shared/shared.module';
+
  
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/index';
@@ -14,10 +20,7 @@ import { routing }        from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService} from './_services/index';
-import { HomeComponent } from './home/index';
-import { LoginComponent } from './login/index';
-import { RegisterComponent } from './register/index';
-import { TestComponent, Test2Component, Test3Component } from './test/index';
+import { CaseService } from './_services/case/index';
 
  
 @NgModule({
@@ -25,23 +28,22 @@ import { TestComponent, Test2Component, Test3Component } from './test/index';
         BrowserModule,
         FormsModule,
         HttpModule,
+        LoginModule,
+        RegisterModule,
+        DashboardModule,
+        SharedModule.forRoot(),
         routing
     ],
     declarations: [
         AppComponent,
-        AlertComponent,
-        HomeComponent,
-        LoginComponent,
-        RegisterComponent,
-        TestComponent,
-        Test2Component,
-        Test3Component
+        AlertComponent
     ],
     providers: [
         AuthGuard,
         AlertService,
         AuthenticationService,
         UserService,
+        CaseService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,
