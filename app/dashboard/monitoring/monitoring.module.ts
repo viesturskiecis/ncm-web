@@ -3,8 +3,10 @@ import { RouterModule } from '@angular/router';
 
 import { MonitoringComponent } from './monitoring.component';
 
+import { ChartModule } from 'angular2-highcharts';
+
 @NgModule({
-    imports: [RouterModule],
+    imports: [RouterModule, ChartModule],
     declarations: [MonitoringComponent],
     exports: [MonitoringComponent]
 })

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
  
 import { AlertService, AuthenticationService } from '../_services/index';
@@ -6,8 +6,7 @@ import { AlertService, AuthenticationService } from '../_services/index';
 @Component({
     moduleId: module.id,
     templateUrl: 'login.component.html',
-    styleUrls: ['login.component.css'],
-    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['login.component.css']
 })
  
 export class LoginComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
 *	This class represents the lazy loaded DashboardComponent.
@@ -8,8 +8,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 	moduleId: module.id,
 	selector: 'dashboard-cmp',
 	templateUrl: 'dashboard.component.html',
-	styleUrls: ['dashboard.component.css'],
-	encapsulation: ViewEncapsulation.None,
+	styleUrls: ['dashboard.component.css']
 })
 
 export class DashboardComponent { }
