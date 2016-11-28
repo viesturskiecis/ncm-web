@@ -21,6 +21,7 @@ import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService} from './_services/index';
 import { CaseService } from './_services/case/index';
+import { StatisticsService } from './_services/statistics/index';
 
  
 @NgModule({
@@ -44,6 +45,7 @@ import { CaseService } from './_services/case/index';
         AuthenticationService,
         UserService,
         CaseService,
+        StatisticsService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,

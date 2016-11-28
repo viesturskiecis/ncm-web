@@ -1,26 +1,21 @@
-<table class="table">
-<thead>
-<tr>
-<th>Header 1</th>
-<th>Header 2</th>
-<th>Header 3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="active">Active</td>
-<td class="success">Success</td>
-<td> </td>
-</tr>
-<tr>
-<td> </td>
-<td class="info">Info</td>
-<td> </td>
-</tr>
-<tr>
-<td class="danger">Danger</td>
-<td> </td>
-<td class="warning">Warning</td>
-</tr>
-</tbody>
-</table>
+<div class="container">
+  <h2>Statistics</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Job ID</th>
+        <th>Name</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stat of statistics">
+        <td>{{stat.jobId}}</td>
+        <td>{{stat.name}}</td>
+        <td>{{stat.value}}</td>
+      </tr>      
+    </tbody>
+  </table>
+</div>
+
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
